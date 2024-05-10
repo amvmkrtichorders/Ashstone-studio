@@ -1,0 +1,60 @@
+.header{
+  background-color: var(--primary-color);
+  position: relative;
+  z-index: 200;
+  &-top{
+    border-bottom: var(--bd-solid);
+    padding-block: 1.35rem 1.23rem;
+    > .container{
+      @include flexbox(center, space-between, nowrap);
+    }
+    &__left,
+    &__right{
+      @include col-sizing(30%);
+    }
+  }
+  &-nav{
+    background-color: var(--primary-color);
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    padding-block: 1.2rem 1rem;
+    border-bottom: var(--bd-solid);
+    @include flexbox(center, center);
+    font-size: 1rem;
+  }
+
+  @include respond-below(lg){
+    &-top{
+      border: none;
+      padding-block: 1.8rem;
+      &__left, &__right{
+        @include col-sizing(2rem);
+      }
+    }
+    &-nav{
+      display: none;
+    }
+  }
+}
+.logo{
+  line-height: 1;
+  display: inline-block;
+  text-align: center;
+  img{
+    max-width: 90%;
+  }
+}
+.menu-toggle{
+  font-size: 1.65rem;
+  line-height: 1;
+  display: none;
+  .icon{
+    margin-top: 4px;
+  }
+  @include respond-below(lg){
+    display: inline-flex;
+  }
+}
+

@@ -1,0 +1,34 @@
+.search-form{
+  position: relative;
+  @include flexbox(center, flex-end);
+  & &__input{
+    opacity: 0;
+    width: 0;
+    padding-inline: .6rem;
+    height: 2.4rem;
+    @include trns();
+    &:focus{
+      width: 14rem;
+      opacity: 1;
+      margin-right: -.3rem;
+    }
+  }
+  & &__icon{
+    cursor: pointer;
+    font-size: 1.125rem;
+    right: 0;
+    padding: 0;
+    line-height: 1;
+    @include center(y);
+    .icon{
+      margin-top: 3px;
+    }
+  }
+
+  @include respond-below(md){
+    & &__input{
+      position: absolute;
+      right: 0;
+    }
+  }
+}

@@ -1,0 +1,46 @@
+:root {
+  --cont-width: 80.5rem;
+  --col_space: 20px;
+  --gap: 1rem;
+  --x-space: 4rem;
+  --font-main: 'Roboto', sans-serif;
+  --font-heading: 'Roboto', serif;
+
+  --radius: 0;
+  --brand-color: #EB0028;
+  --main-text-color: #000;
+  --heading-main-color: #000;
+  --primary-color: #fff;
+  --primary-text-color: #000;
+  --link-hover-color: #969696;
+  --bd-solid: 1px solid #E9E9E9;
+}
+
+@import "variables";
+@import "mixins";
+@import "fonts";
+@import "reset";
+@import "extends";
+@import "general";
+@import "forms";
+@import "menu";
+@import "header";
+@import "search-form";
+@import "footer";
+@import "pages";
+
+@include respond-below(xl){
+  :root{
+    --x-space: 2rem;
+  }
+}
+@include respond-below(md){
+  :root{
+    --x-space: 1.25rem;
+  }
+}
+
+
+
+
+

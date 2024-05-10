@@ -1,0 +1,263 @@
+
+// General
+html{
+  scroll-behavior: smooth;
+}
+body{
+  color: var(--main-text-color, #000);
+  line-height: 1.4285;
+  font:{
+    family: var(--font-main);
+    size: .875rem;
+    weight: 400;
+  }
+  &.mobile-menu-open{
+    position: relative;
+    .header, .page-content, .footer{
+      opacity: .6;
+    }
+  }
+  &.modal-open, &.mobile-menu-open{
+    overflow: hidden;
+  }
+}
+p{
+  @include txtM0;
+  margin-bottom: 1rem;
+}
+address{
+  font-style: normal;
+}
+strong{
+  font-weight: 700;
+}
+#wrapper,
+.wrapper{
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+  @include flex-column();
+  body.sign-page &,
+  body.mobile-menu-open &{
+    padding-top: 0;
+  }
+}
+.page-content {
+  width: 100%;
+  flex: 1 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.container{
+  @include container();
+  &--full{
+    max-width: 100%;
+  }
+}
+
+.row{
+  @include m-space(calc(-1*var(--col_space)));
+  @include flex;
+    > *{
+      @include space(x, var(--col_space));
+    }
+    > .col{
+      position: relative;
+      flex: 1 1 0;
+      &--half{
+        @include col-sizing(50%);
+      }
+    }
+  @include respond-below(sm){
+    > .col{
+      &--half{
+        @include col-sizing(100%);
+      }
+    }
+  }
+}
+
+//  Headings
+h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6{
+  margin-top: 0;
+  font-weight: 700;
+  color: var(--heading-main-color);
+}
+h1, .h1, h2, .h2, h3, .h3{
+  line-height: 1.25;
+  font: {
+    family: var(--font-heading);
+  }
+}
+h1,.h1{
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+}
+h2,.h2{
+  font-size: 2.5rem;
+  margin-bottom: .75rem;
+}
+h3,.h3{
+  font-size: 1.5rem;
+  margin-bottom: .9rem;
+}
+h4,.h4{
+  font-size: 1.125rem;
+  line-height: 1.5;
+  margin-bottom: .8rem;
+}
+h5, .h5{
+  font-size: .875rem;
+  margin-bottom: .75rem;
+}
+h6,.h6{
+  font-size: .8125rem;
+  color: var(--brand-color);
+}
+a{
+  color: inherit;
+  @include trns();
+  &:hover{
+
+  }
+}
+p , small{
+  > a{
+    @extend .primary-text;
+    @extend %link-underline-hover;
+  }
+}
+small{
+  font-size: .75rem;
+}
+.link{
+  display: inline-block;
+  border-bottom: 1px solid;
+  &:hover{
+    border-bottom-color: transparent;
+  }
+
+}
+.strached-link{
+  &:after{
+    @include pseudoLink();
+  }
+}
+blockquote{
+}
+picture{
+  display: inline-block;
+}
+button{
+  font-family: var(--font-main);
+  font-weight: 400;
+}
+figure{
+  display: block;
+  margin: 0;
+  img{
+    width: 100%;
+    margin-bottom: 1em;
+  }
+  figcaption{
+    text-align: right;
+  }
+}
+video{
+
+}
+sup{
+
+}
+hr{
+  border: none;
+  border-top: var(--border);
+}
+.icon {
+  display: inline-block;
+  @include size(1em);
+}
+.progressbar{
+
+}
+.primary-text{
+  color: var(--primary-color);
+}
+.brand-text{
+  color: var(--brand-color);
+}
+.clear-list{
+  @include listReset;
+}
+.text-center{
+  text-align: center;
+}
+.animate-elem{
+  > *{
+    transform: translateY(30px);
+    opacity: 0;
+    @include trns($duration: .5s, $delay: var(--anim-delay));
+  }
+  &.is-visible{
+    > *{
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  &.fade-effect{
+    > *{
+      transform: none !important;
+    }
+  }
+}
+
+
+// visibility
+.hide{
+  @extend %hide;
+}
+@each $key, $value in $breakpoints {
+  .d-flex-#{$key}-down{@extend %hide}
+  .d-block-#{$key}-down{@extend %hide}
+
+  @include respond-below($key){
+    .d-flex-#{$key}-down{
+      display: flex;
+    }
+    .d-block-#{$key}-down{
+      display: block;
+    }
+    .d-none-#{$key}-down{
+      display: none;
+    }
+  }
+}
+
+
+// keyframes
+@keyframes fade-innnn{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  0%{
+    max-height: 0;
+  }
+  100%{
+    opacity: 1000px;
+  }
+}
+@keyframes slideInTrf {
+  0%{
+    transform: scale(0);
+  }
+  100%{
+    transform: scale(1);
+  }
+}

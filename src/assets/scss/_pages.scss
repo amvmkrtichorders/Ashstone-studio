@@ -1,0 +1,73 @@
+.section-articles{
+  padding-block: 3rem;
+
+  @include respond-below(lg){
+    padding-top: .5rem;
+  }
+}
+
+.posts-list{
+  --cols-count: 3;
+  --y-space: 48px;
+  row-gap: var(--y-space);
+  &__item{
+    @include col-sizing( calc(100% / var(--cols-count)) )
+  }
+  @include respond-below(lg){
+    --cols-count: 2;
+  }
+  @include respond-below(sm){
+    --cols-count: 1;
+  }
+}
+
+.post{
+  $p: &;
+  color: #929292;
+  @include flex-column();
+  &__img{
+    overflow: hidden;
+
+    img{
+      width: 100%;
+      @include trns();
+    }
+  }
+  &__data{
+    padding-top: 1rem;
+  }
+  &__meta{
+    margin-bottom: .8rem;
+    @extend %text-12;
+    @include flexbox();
+    > * {
+      @include inline-flexbox(center);
+      + * {
+        &:before {
+          content: "";
+          display: inline-block;
+          margin-inline: .3125rem;
+          background-color: #9B9B9B;
+          @include image(.1875rem);
+        }
+      }
+    }
+  }
+  &__author{
+    color: var(--primary-text-color);
+    font-weight: 500;
+  }
+  &__category{
+    color: var(--brand-color);
+    margin-bottom: 1rem;
+    font-weight: 700;
+    @extend %text-13;
+  }
+  &:hover{
+    #{$p}__img{
+      img{
+        transform: scale(1.4);
+      }
+    }
+  }
+}
